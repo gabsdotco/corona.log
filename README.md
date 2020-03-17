@@ -1,4 +1,4 @@
-# Corona Log
+# COVID Log
 
 That's a simple application for checking the COVID-19 updates around the world.
 
