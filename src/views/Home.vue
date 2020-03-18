@@ -2,15 +2,7 @@
   <div class="home">
     <div class="welcome-title">
       <h1 id="strong-title">Hello,</h1>
-      <h1 id="light-title">select your region to see</h1>
-    </div>
-    <div class="search">
-      <input v-model="search" type="text" placeholder="Insert the country">
-    </div>
-    <div class="countries">
-      <div class="country-slot" v-for="(country, index) in filter" :key="index">
-        {{ country }}
-      </div>
+      <h1 id="light-title">let's start to see the statistics</h1>
     </div>
   </div>
 </template>
@@ -75,43 +67,6 @@ $primary: rgb(255, 206, 70);
     #light-title {
       font-size: 26px;
       font-weight: 400;
-    }
-  }
-
-  .search {
-    width: 100%;
-    margin: 30px 0px;
-
-    input {
-      width: 100%;
-      padding: 25px 0px;
-      font-size: 24px;
-      text-align: center;
-      border: none;
-      border-bottom: 1px solid rgb(245, 245, 245);
-      color:rgb(212, 212, 212);
-      outline: none;
-
-      &::placeholder {
-        color:rgb(212, 212, 212);
-      }
-    }
-  }
-
-  .countries {
-    width: 100%;
-    height: 200px;
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    .country-slot {
-      width: 100%;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid rgb(245, 245, 245);
-      margin: 15px 0px;
-      padding-bottom: 15px;
     }
   }
 }
