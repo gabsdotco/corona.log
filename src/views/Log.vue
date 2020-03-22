@@ -23,15 +23,21 @@
           <span>Recovered</span>
         </div>
       </div>
+      <empty-state v-else />
     </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment';
+import EmptyState from '@/components/EmptyState.vue';
 
 export default {
   name: 'Log',
+
+  components: {
+    EmptyState,
+  },
 
   props: {
     country: String,
