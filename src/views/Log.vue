@@ -3,24 +3,26 @@
     <div class="stats">
       <div class="stats-title">
         <div class="stats-title--head">{{ capitalizedCountry }},</div>
-        <div class="stats-title--date">Log from {{ logCalendar }}, {{ logDate }}</div>
+        <div class="stats-title--date">
+          {{ $t('log.date_description') }} {{ logCalendar }}, {{ logDate }}
+        </div>
       </div>
       <div class="stats-wrapper" v-if="lastLog">
         <div class="stats-wrapper-item">
           {{ lastLog.confirmed }}
-          <span>Confirmed</span>
+          <span>{{ $t('log.stats.confirmed') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ newCases }}
-          <span>New cases</span>
+          <span>{{ $t('log.stats.new_cases') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ lastLog.deaths }}
-          <span>{{ lastLog.deaths > 1 ? 'Deaths' : 'Death' }}</span>
+          <span>{{ $t('log.stats.deaths') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ lastLog.recovered }}
-          <span>Recovered</span>
+          <span>{{ $t('log.stats.recovered') }}</span>
         </div>
       </div>
       <empty-state v-else />
