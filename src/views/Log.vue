@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import EmptyState from '@/components/EmptyState.vue';
 
 export default {
@@ -67,11 +66,11 @@ export default {
     },
 
     logDate() {
-      return moment(this.lastLog?.date).format('MM/DD/YYYY');
+      return this.$moment(this.lastLog?.date).format('MM/DD/YYYY');
     },
 
     logCalendar() {
-      return moment(this.lastLog?.date).format('dddd');
+      return this.$moment(this.lastLog?.date).format('dddd');
     },
 
     capitalizedCountry() {

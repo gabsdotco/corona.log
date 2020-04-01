@@ -37,6 +37,7 @@ export default {
 
   async created() {
     await this.getCountries();
+    // this.$moment.locale(myNewLocale);
   },
 
   computed: {
