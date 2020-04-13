@@ -7,6 +7,8 @@
       </div>
       <div class="footer-right">
         <div class="footer-right-item">
+          <button @click="changeLocale('pt-BR')">Portuguese</button>
+          <button @click="changeLocale('en')">English</button>
         </div>
       </div>
     </div>
@@ -18,23 +20,21 @@ export default {
   name: 'Footer',
 
   methods: {
-    onChangeLocale() {
-      // Do Something
+    changeLocale(language) {
+      this.$i18n.locale = language;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+@import '@/assets/variables.scss';
 
 .container {
   width: 100%;
   height: 98px;
-  position: absolute;
+  position: fixed;
+  bottom: 0;
 
   .footer {
     width: 100%;
@@ -51,13 +51,6 @@ export default {
       align-items: center;
       height: 100%;
       padding: 0px 20px;
-    }
-
-    .footer-left {
-      width: 58px;
-    }
-
-    .footer-right {
     }
   }
 }
