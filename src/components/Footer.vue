@@ -7,7 +7,7 @@
       </div>
       <div class="footer-right">
         <div class="footer-right-item">
-          <button @click="changeLocale('pt-BR')">Portuguese</button>
+          <button @click="changeLocale('pt_BR')">Portuguese</button>
           <button @click="changeLocale('en')">English</button>
         </div>
       </div>
@@ -22,6 +22,7 @@ export default {
   methods: {
     changeLocale(language) {
       this.$i18n.locale = language;
+      this.$moment.locale('pt-br');
     },
   },
 };
