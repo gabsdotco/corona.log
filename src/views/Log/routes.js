@@ -3,7 +3,7 @@ import Log from './index.vue';
 export default [
   {
     path: '/log/:country',
-    name: 'Log',
+    name: 'log',
     component: Log,
     props: true,
   },

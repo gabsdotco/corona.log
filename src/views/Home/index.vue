@@ -64,7 +64,8 @@ export default {
 
     onClick(country) {
       this.$router.push({
-        path: `/log/${country.toLowerCase()}`,
+        name: 'log',
+        params: { country: country.toLowerCase() },
       });
     },
   },
@@ -73,15 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 @keyframes filter {
   from {

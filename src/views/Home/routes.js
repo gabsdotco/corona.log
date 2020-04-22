@@ -3,7 +3,7 @@ import Home from './index.vue';
 export default [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home,
   },
 ];
