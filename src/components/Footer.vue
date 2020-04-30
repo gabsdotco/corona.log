@@ -7,8 +7,7 @@
       </div>
       <div class="footer-right">
         <div class="footer-right-item">
-          <button @click="changeLocale('pt_BR')">Portuguese</button>
-          <button @click="changeLocale('en')">English</button>
+          <Select v-model="test" :options="options" />
         </div>
       </div>
     </div>
@@ -16,8 +15,19 @@
 </template>
 
 <script>
+import Select from '@/components/Select.vue';
+
 export default {
   name: 'Footer',
+
+  components: {
+    Select,
+  },
+
+  data: () => ({
+    test: null,
+    options: ['Portuguese', 'English'],
+  }),
 
   methods: {
     changeLocale(language) {
