@@ -94,10 +94,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/variables.scss';
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+$border: #f3f3f3;
 
 .container {
   margin: auto;
