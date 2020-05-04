@@ -3,11 +3,12 @@
     <div class="footer">
       <div class="footer-left">
         <div class="footer-left-item">
+          <slot name="left" />
         </div>
       </div>
       <div class="footer-right">
         <div class="footer-right-item">
-          <Select v-model="test" :options="options" />
+          <slot name="right" />
         </div>
       </div>
     </div>
@@ -15,26 +16,8 @@
 </template>
 
 <script>
-import Select from '@/components/Select.vue';
-
 export default {
   name: 'Footer',
-
-  components: {
-    Select,
-  },
-
-  data: () => ({
-    test: null,
-    options: ['Portuguese', 'English'],
-  }),
-
-  methods: {
-    changeLocale(language) {
-      this.$i18n.locale = language;
-      this.$moment.locale('pt-br');
-    },
-  },
 };
 </script>
 

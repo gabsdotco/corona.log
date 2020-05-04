@@ -1,6 +1,7 @@
 <template>
   <div
     class="select__container"
+    v-if="options"
     :value="selected"
     @blur="open = false"
   >
@@ -9,7 +10,12 @@
       :class="{ 'select--open': open }"
       @click="open = !open"
     >
-      {{ selected }}
+      <div class="selected__icon">
+        <i class="fas fa-globe-asia"></i>
+      </div>
+      <div class="selected__title">
+        {{ selected[label] }}
+      </div>
     </div>
     <div class="select__container--items" :class="{ 'items--hide': !open }">
       <div
@@ -18,7 +24,11 @@
         :key="index"
         @click="selectOption(option)"
       >
-        {{ option }}
+        <div class="item__icon">
+        </div>
+        <div class="item__title">
+          {{ option[label] }}
+        </div>
       </div>
     </div>
   </div>
@@ -29,17 +39,21 @@ export default {
   name: 'Select',
 
   props: {
-    value: String,
+    label: String,
+    value: [Object, Array],
     options: Array,
   },
 
   data: () => ({
     open: false,
-    selected: null,
+    selected: {},
   }),
 
-  mounted() {
-    this.selected = this.options.length ? this.options[0] : null;
+  created() {
+    this.selected = this.options?.length
+      ? this.options[0]
+      : null;
+
     this.$emit('input', this.selected);
   },
 
@@ -55,58 +69,82 @@ export default {
 
 <style lang="scss" scoped>
 .select__container {
+  width: 130px;
+  height: 40px;
   position: relative;
-  width: 100%;
   text-align: left;
+  line-height: 40px;
   outline: none;
-  height: 47px;
-  line-height: 47px;
-}
 
-.select__container--selected {
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  border: 1px solid #dfdfdf;
-  color: #808080;
-  padding-left: 18px;
-  cursor: pointer;
-  height: 37px;
-  width: 170px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 14px;
+  .select__container--selected {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #808080;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.03);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.03);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.03);
 
-  &.select--open {
-    border: 1px solid #cacaca;
+    .selected__icon {
+      margin-right: 8px;
+    }
+
+    &.select--open {
+      border: 1px solid #e4e4e4;
+    }
+  }
+
+  .select__container--items {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 45px;
+    right: 0;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #e4e4e4;
+    background-color: #fdfdfd;
+
+    &.items--hide {
+      display: none;
+    }
+
+    .select__container--item {
+      height: 38px;
+      color: #808080;
+      padding-left: 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .item__icon {
+        width: 12px;
+        height: 12px;
+        border: 1.3px solid #bbbaba;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      &:hover {
+        color: rgb(105, 105, 105);
+        background-color: rgb(240, 240, 240);
+
+        .item__icon {
+          border: 1.3px solid #9e9e9e;
+        }
+      }
+    }
   }
 }
 
-.select__container--items {
-  background-color: #f9f9f9;
-  border-radius: 4px;
-  border: 1px solid #dfdfdf;
-  font-size: 14px;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  width: 100%;
-  bottom: 55px;
 
-  &.items--hide {
-    display: none;
-  }
-}
-
-.select__container--item {
-  color: #808080;
-  padding-left: 18px;
-  cursor: pointer;
-  user-select: none;
-
-  &:hover {
-    color: rgb(105, 105, 105);
-    background-color: rgb(233, 233, 233);
-  }
-}
 </style>
