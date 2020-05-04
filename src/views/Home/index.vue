@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="welcome">
-      <h1 class="welcome-text--strong">Hello,</h1>
-      <p class="welcome-text--light">find a region to see the statistics</p>
+      <h1 class="welcome-text--strong">{{ $t('home.strong') }},</h1>
+      <p class="welcome-text--light">{{ $t('home.light') }}</p>
     </div>
     <div class="search">
-      <input type="text" placeholder="Insert the region" class="search-input" v-model="search">
+      <input type="text" :placeholder="$t('home.input')" class="search-input" v-model="search" />
     </div>
     <div class="filter" v-if="search">
       <template v-if="hasResults">
@@ -13,13 +13,12 @@
           class="filter-card"
           v-for="(country, index) in filter"
           :key="index"
-          @click="onClick(country)">
-          {{ country }}
-        </div>
+          @click="onClick(country)"
+        >{{ country }}</div>
       </template>
       <template v-else>
         <div class="filter-empty-state">
-          <p>No results</p>
+          <p>{{ $t('home.empty_state') }}</p>
         </div>
       </template>
     </div>
@@ -56,14 +55,17 @@ export default {
 
   methods: {
     async getCountries() {
-      this.countries = await fetch('https://pomber.github.io/covid19/countries.json')
+      this.countries = await fetch(
+        'https://pomber.github.io/covid19/countries.json',
+      )
         .then((response) => response.json())
         .then((data) => Object.keys(data));
     },
 
     onClick(country) {
       this.$router.push({
-        path: `/log/${country.toLowerCase()}`,
+        name: 'log',
+        params: { country: country.toLowerCase() },
       });
     },
   },
@@ -71,16 +73,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/variables.scss';
-
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+@import "@/assets/variables.scss";
 
 @keyframes filter {
-  from {height: 120px;}
-  to {height: 150px;}
+  from {
+    height: 120px;
+  }
+  to {
+    height: 150px;
+  }
 }
 
 .container {

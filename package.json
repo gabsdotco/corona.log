@@ -7,10 +7,14 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "resolutions": {
+    "moment": "2.24.0"
+  },
   "dependencies": {
     "core-js": "^3.6.4",
-    "moment": "^2.24.0",
+    "moment": "2.24.0",
     "vue": "^2.6.11",
+    "vue-i18n": "^8.15.5",
     "vue-router": "^3.1.5"
   },
   "devDependencies": {

@@ -4,7 +4,7 @@
       <i class="fas fa-file-alt"></i>
     </div>
     <div class="empty-state--description">
-      No logs for that country
+      {{ $t('components.empty_state.message') }}
     </div>
   </div>
 </template>

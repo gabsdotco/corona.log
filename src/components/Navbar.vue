@@ -36,11 +36,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/variables.scss';
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
 .container {
   width: 100%;
   height: 98px;

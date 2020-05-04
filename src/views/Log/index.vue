@@ -3,24 +3,26 @@
     <div class="stats">
       <div class="stats-title">
         <div class="stats-title--head">{{ capitalizedCountry }},</div>
-        <div class="stats-title--date">Log from {{ logCalendar }}, {{ logDate }}</div>
+        <div class="stats-title--date">
+          {{ $t('log.date_description') }} {{ logCalendar }}, {{ logDate }}
+        </div>
       </div>
       <div class="stats-wrapper" v-if="lastLog">
         <div class="stats-wrapper-item">
           {{ lastLog.confirmed }}
-          <span>Confirmed</span>
+          <span>{{ $t('log.stats.confirmed') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ newCases }}
-          <span>New cases</span>
+          <span>{{ $t('log.stats.new_cases') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ lastLog.deaths }}
-          <span>{{ lastLog.deaths > 1 ? 'Deaths' : 'Death' }}</span>
+          <span>{{ $t('log.stats.deaths') }}</span>
         </div>
         <div class="stats-wrapper-item">
           {{ lastLog.recovered }}
-          <span>Recovered</span>
+          <span>{{ $t('log.stats.recovered') }}</span>
         </div>
       </div>
       <empty-state v-else />
@@ -29,7 +31,6 @@
 </template>
 
 <script>
-import moment from 'moment';
 import EmptyState from '@/components/EmptyState.vue';
 
 export default {
@@ -65,11 +66,11 @@ export default {
     },
 
     logDate() {
-      return moment(this.lastLog?.date).format('MM/DD/YYYY');
+      return this.$moment(this.lastLog?.date, 'YYYY/MM/DD').format('MM/DD/YYYY');
     },
 
     logCalendar() {
-      return moment(this.lastLog?.date).format('dddd');
+      return this.$moment(this.lastLog?.date, 'YYYY/MM/DD').format('dddd');
     },
 
     capitalizedCountry() {
@@ -93,10 +94,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/variables.scss';
 
-@keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+$border: #f3f3f3;
 
 .container {
   margin: auto;
