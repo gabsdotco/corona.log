@@ -1,11 +1,13 @@
 import Vue from 'vue';
-import VueMoment from 'vue-moment';
+import * as moment from 'moment';
+
 import App from './App.vue';
 
 import i18n from './utils/translation';
 import router from './router';
 
-Vue.use(VueMoment);
+Vue.prototype.$moment = moment;
+
 Vue.config.productionTip = false;
 
 new Vue({
