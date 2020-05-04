@@ -66,11 +66,11 @@ export default {
     },
 
     logDate() {
-      return this.$moment(this.lastLog?.date).format('MM/DD/YYYY');
+      return this.$moment(this.lastLog?.date, 'YYYY/MM/DD').format('MM/DD/YYYY');
     },
 
     logCalendar() {
-      return this.$moment(this.lastLog?.date).format('dddd');
+      return this.$moment(this.lastLog?.date, 'YYYY/MM/DD').format('dddd');
     },
 
     capitalizedCountry() {
